@@ -29,6 +29,10 @@ function Die() {
     this.rollable = true;
 }
 
+Die.prototype.getValue = function() {
+    return this.value;
+}
+
 function printDie(die) {
     console.log(die.value + " " + die.rollable);
 }
@@ -85,12 +89,45 @@ function isNKind(dice, quantity) {
 }
 
 function isStraight(dice, quantity) {
+    let sortedDice = dice.concat().sort();
+    let seq = 1;
+    let last = sortedDice[0].value;
     
-    return false; //FIXME
+    for (let i = 1; i < quantity; i++) {
+	let next = sortedDice[i].value;
+	if (next - last === 1) {
+	    seq += 1;
+	    last = next;
+	} else {
+	    seq = 1;
+	}
+    }
+    
+    return seq >= quantity;
+}
+
+function isFullHouse(dice) {
+    let sortedDice = dice.concat().sort();
+    return (dice[0].getValue() === dice[1].getValue() && // lower 2 pair higher 3s
+	     
+	    dice[2].getValue() === dice[3].getValue() &&
+	    dice[2].getValue() === dice[4].getValue() &&
+	    
+	    dice[0].getValue() !== dice[2].getValue()) ||
+	    
+	    (dice[0].getValue() === dice[1].getValue() && // lower 3s higher 2 pair
+	     dice[0].getValue() === dice[2].getValue() &&
+	     
+	     dice[3].getValue() === dice[4].getValue() &&
+	     
+	     dice[0].getValue() !== dice[3].getValue());
 }
 
 function isYahtzee(dice) {
-    return false; //FIXME
+    return (dice[0].getValue() === dice[1].getValue() &&
+	    dice[0].getValue() === dice[2].getValue() &&
+	    dice[0].getValue() === dice[3].getValue() &&
+	    dice[0].getValue() === dice[4].getValue());
 }    
 
 function upperScore(dice, val) {
@@ -139,6 +176,8 @@ function lowerScore(dice, category) {
     default:
 	score = sumDice(dice);
     }
+
+    return score;
 }
 
 dice = createDice(diceQuantity);
