@@ -1,3 +1,25 @@
+const ACES = 1;
+const TWOS = 2;
+const THREES = 3;
+const FOURS = 4;
+const FIVES = 5;
+const SIXES = 6;
+
+const FULLHOUSE = 25;
+const SMALLSTRAIGHT = 30;
+const LARGESTRAIGHT = 40;
+const YAHTZEE = 50;
+const YAHTZEEBONUS = 100;
+
+const lowerSectionCategory = {
+    THREE : 'three', // three of a kind
+    FOUR : 'four', // four of a kind
+    FULLHOUSE : 'full-house',
+    SMSTRAIGHT : 'small-straight',
+    LGSTRAIGHT : 'large-straight',
+    YAHTZEE : 'yahtzee'
+};
+
 function isNKind(dice, quantity) {
     /* fix me: although this is a small array and cheap to compute
        with brute force, it is a bad algorithm. */
