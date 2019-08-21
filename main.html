@@ -10,102 +10,164 @@
   <body>
 
     <div class="rollingDies">
-      <input type="checkbox" id="die1" name="die1" >
-      <label for="die1">Die 1</label>
+      <table>
+	<tr>
+	  <td> <img id='img1' src="./images/die_small_1.png" alt="1"> </td>
+	  <td> <img id='img2' src="./images/die_small_1.png" alt="1"> </td>
+	  <td> <img id='img3' src="./images/die_small_1.png" alt="1"> </td>
+	  <td> <img id='img4' src="./images/die_small_1.png" alt="1"> </td>
+	  <td> <img id='img5' src="./images/die_small_1.png" alt="1"> </td>
+	</tr>
+	<tr>
+	  <td>
+	    <input type="checkbox" id="die1" name="die1" value="0" checked>
+	    <label for="die1">Die 1</label>
+	  </td>
+	  <td>
+	    <input type="checkbox" id="die2" name="die2" value="1" checked>
+	    <label for="die2">Die 2</label>
+	  </td>
+	  <td>
+	    <input type="checkbox" id="die3" name="die3" value="2" checked>
+	    <label for="die3">Die 3</label>
+	  </td>
+	  <td>
+	    <input type="checkbox" id="die4" name="die4" value="3" checked>
+	    <label for="die4">Die 4</label>
+	  </td>
+	  <td>
+	    <input type="checkbox" id="die5" name="die5" value="4" checked>
+	    <label for="die5">Die 5</label>
+	  </td>
+	</tr>
+      </table>
 
-      <input type="checkbox" id="die2" name="die2" >
-      <label for="die2">Die 2</label>
-
-      <input type="checkbox" id="die3" name="die3" >
-      <label for="die3">Die 3</label>
-
-      <input type="checkbox" id="die4" name="die4" >
-      <label for="die4">Die 4</label>
-
-      <input type="checkbox" id="die5" name="die5" >
-      <label for="die5">Die 5</label>
-
+      <p id="game-info"> 
+	Round: 1, Remaining rolls: 3
+      </p>
       <button class="roll" type="button">Roll Dice</button>
+      <button class="score" type="button">Score</button>
     </div>
 
     <table>
       <thead>
 	<tr>
-	  <th colspan="2">Yahtzee</th>
+	  <th colspan="3">Yahtzee</th>
 	</tr>
       </thead>
       <tbody>
 	<tr>
 	  <td>Upper Section</td>
-	  <td>Game 1</td>
+	  <td>Points</td>
+	  <td></td>
 	</tr>
 	<tr>
 	  <td> Aces </td>
-	  <td> </td>
+	  <td id="aces"> </td>
+	  <td><input type="radio" id="aces_btn" name="pointSelector" value="aces"></td>
 	</tr>
 	<tr>
 	  <td> Twos </td>
-	  <td> </td>
+	  <td id="twos"> </td>
+	  <td><input type="radio" id="twos_btn" name="pointSelector" value="twos"></td>
 	</tr>
 	<tr>
 	  <td> Threes </td>
-	  <td> </td>
+	  <td id="threes"> </td>
+	  <td><input type="radio" id="threes_btn" name="pointSelector" value="threes"></td>
 	</tr>
 	<tr>
 	  <td> Fours </td>
-	  <td> </td>
+	  <td id="fours"> </td>
+	  <td><input type="radio" id="fours_btn" name="pointSelector" value="fours"></td>
 	</tr>
 	<tr>
 	  <td> Fives </td>
-	  <td> </td>
+	  <td id="fives"> </td>
+	  <td><input type="radio" id="fives_btn" name="pointSelector" value="fives"></td>
 	</tr>
 	<tr>
 	  <td> Sixes </td>
+	  <td id="sixes"> </td>
+	  <td><input type="radio" id="sixes_btn" name="pointSelector" value="sixes"></td>
+	</tr>
+	<tr>
+	  <td> Total Score </td>
+	  <td id="total-score-upper"> </td>
+	  <td></td>
+	<tr>
+	  <td> Bonus </td>
+	  <td id="bonus"></td>
 	  <td> </td>
 	</tr>
-	
+	<tr>
+	  <td> Total </td>
+	  <td id="total-upper"> </td>
+	  <td> </td>
+	</tr>
+
 	<tr>
 	  <td> Lower Section </td>
+	  <td> </td>
 	  <td> </td>
 	</tr>
 	<tr>
 	  <td> 3 of a kind </td>
-	  <td> </td>
+	  <td id="three-kind"> </td>
+	  <td><input type="radio" id="threekind_btn" name="pointSelector" value="three-kind"></td>
 	</tr>
 	<tr>
 	  <td> 4 of a kind </td>
-	  <td> </td>
+	  <td id="four-kind"> </td>
+	  <td><input type="radio" id="fourkind_btn" name="pointSelector" value="four-kind"></td>
 	</tr>
 	<tr>
 	  <td> Full House </td>
-	  <td> </td>
+	  <td id="full-house"> </td>
+	  <td><input type="radio" id="fullhouse_btn" name="pointSelector" value="full-house"></td>
 	</tr>
 	<tr>
 	  <td> Small Straight </td>
-	  <td> </td>
+	  <td id="small-straight"> </td>
+	  <td><input type="radio" id="smstraight_btn" name="pointSelector" value="small-straight"></td>
 	</tr>
 	<tr>
 	  <td> Large Straight </td>
-	  <td> </td>
+	  <td id="large-straight"> </td>
+	  <td><input type="radio" id="lgstraight_btn" name="pointSelector" value="large-straight"></td>
 	</tr>
 	<tr>
 	  <td> Yahtzee </td>
-	  <td> </td>
+	  <td id="yahtzee"> </td>
+	  <td><input type="radio" id="yahtzee_btn" name="pointSelector" value="yahtzee"></td>
 	</tr>
 	<tr>
 	  <td> Chance </td>
-	  <td> </td>
+	  <td id="chance"> </td>
+	  <td><input type="radio" id="chance_btn" name="pointSelector" value="chance"></td>
+	</tr>
+	<tr>
+	  <td rowspan="2"> Yahtzee Bonus </td>
+	  <td id="yahtzee-checks"> &nbsp </td>
+	  <td></td>
+	</tr>
+	<tr>
+	  <td id="yahtzee-bonus-total"></td>
+	  <td>&nbsp</td>
+	</tr>
+	<tr>
+	  <td> Total </td>
+	  <td id="lower-total"></td>
+	  <td></td>
+	</tr>
+	<tr>
+	  <td> Grand Total </td>
+	  <td id="grand-total"></td>
+	  <td></td>
 	</tr>
       </tbody>
     </table>
 
-    <img src="./images/die_small_1.png" alt="1">
-    <img src="./images/die_small_2.png" alt="2">
-    <img src="./images/die_small_3.png" alt="3">
-    <img src="./images/die_small_4.png" alt="4">
-    <img src="./images/die_small_5.png" alt="5">
-    <img src="./images/die_small_6.png" alt="6">
-	
     <script src="dice.js"></script>
     <script src="scoring.js"></script>
     <script src="yahtzee.js"></script>

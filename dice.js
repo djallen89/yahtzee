@@ -5,14 +5,6 @@ function Die() {
     this.rollable = true;
 }
 
-Die.prototype.getValue = function() {
-    return this.value;
-};
-
-Die.prototype.setValue = function(val) {
-    this.value = val;
-};
-
 Die.prototype.toggleRollable = function() {
     this.rollable = !this.rollable;
 };
@@ -26,34 +18,25 @@ function rollDie() {
 }
 
 function createDice(quantity) {
-    let dice = [];
-    for (let i = 0; i < quantity; i++) {
-	dice.push(new Die());
-    }
-    return dice;
+    return Array.from({length: quantity}, _elt => new Die());
 }
 
 function printDice(dice) {
-    let i = 0;
-    for (let die of dice) {
-	printDie(die);
-    }
+    dice.map(die => printDie(die));
 }
 
 function toggleDice(dice, toggleList) {
-    for (let idx of toggleList) {
-	dice[idx].toggleRollable();
-    }
+    toggleList.map(idx => dice[idx].toggleRollable());
 }
 
 function rollDice(dice) {
-    for (let die of dice) {
-	if (die.rollable) {
-	    die.setValue(rollDie());
-	}
-    }
+    dice.filter(die => die.rollable).map(die => die.value = rollDie());
 }
 
 function sumDice(dice) {
     return dice.reduce((score, die) => score + die.value, 0);
+}
+
+function dieCompare(a, b) {
+    return a.value - b.value;
 }
